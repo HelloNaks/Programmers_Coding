@@ -1,0 +1,27 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> solution(vector<int> arr) {
+    vector<int> answer;
+    int min=1000;
+    int num=0;
+    if(arr.size()==1)
+    {
+        answer[0] = -1;
+        return answer;
+    }
+    for(int i=0;i<arr.size();i++)
+    {
+        if(arr[i] < min)
+        {
+            min=arr[i];
+            num=i;
+        }
+    }
+    arr.erase(arr.begin() + num);
+    answer.assign(arr.begin(), arr.begin()+arr.size());
+    return answer;
+}
