@@ -1,0 +1,28 @@
+// 스택을 사용하여 집어넣을 수와 맨 위의 수가 같으면 pop()을 하고
+// 집어넣을 수와 맨 위의 수가 다르면 push()를 하여
+// 스택안에 남은 자료가 없으면 1을 출력, 있으면 0을 출력
+
+#include <string>
+#include <stack>
+using namespace std;
+
+int solution(string s) {
+    int answer = 0;
+    stack<char> st;
+
+    for (int i = 0; i < s.size(); i++) {
+        if (st.empty() || st.top() != s[i]) {
+            st.push(s[i]);
+        } else {
+            st.pop();
+        }
+    }
+
+    if (st.size() == 0) {
+        answer = 1;
+    } else {
+        answer = 0;
+    }
+
+    return answer;
+}
