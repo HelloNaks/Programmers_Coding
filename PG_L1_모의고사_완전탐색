@@ -1,0 +1,50 @@
+class Solution {
+    int[] st1={1,2,3,4,5};
+    int r1=0, r2=0, r3=0;
+    int[] st2={2,1,2,3,2,4,2,5};
+    int[] st3={3,3,1,1,2,2,4,4,5,5};
+    int max=0;
+    int size=0;
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        for(int i=0;i<answers.length;i++){
+            if(answers[i]==st1[i%5]){
+                r1++;
+                if(max<r1){
+                    max=r1;
+                }
+            }if(answers[i]==st2[i%8]){
+                r2++;
+                if(max<r2){
+                    max=r2;
+                }
+            }if(answers[i]==st3[i%10]){
+                r3++;
+                if(max<r3){
+                    max=r3;
+                }
+            }
+        }
+        if(r1==max){
+            size++;
+        }
+        if(r2==max){
+            size++;
+        }
+        if(r3==max){
+            size++;
+        }
+        int num=0;
+        answer=new int[size];
+        if(r1==max){
+            answer[num++]=1;
+        }
+        if(r2==max){
+            answer[num++]=2;
+        }
+        if(r3==max){
+            answer[num++]=3;
+        }
+        return answer;
+    }
+}
